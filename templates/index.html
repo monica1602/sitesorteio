@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorteio Online</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎲 Sorteio Online</h1>
+            <p class="subtitle">Sorteie números ou nomes de forma rápida e justa</p>
+        </header>
+
+        <!-- Abas de navegação -->
+        <nav class="tabs">
+            <button class="tab active" data-tab="numeros">
+                <span class="tab-icon">🔢</span>
+                Números
+            </button>
+            <button class="tab" data-tab="nomes">
+                <span class="tab-icon">👥</span>
+                Nomes
+            </button>
+        </nav>
+
+        <!-- Painel: Sorteio de Números -->
+        <section id="tab-numeros" class="tab-content active">
+            <div class="card">
+                <h2>Sortear Números</h2>
+                <div class="form-group">
+                    <label for="num-minimo">Número mínimo</label>
+                    <input type="number" id="num-minimo" value="1" min="0">
+                </div>
+                <div class="form-group">
+                    <label for="num-maximo">Número máximo</label>
+                    <input type="number" id="num-maximo" value="100" min="0">
+                </div>
+                <div class="form-group">
+                    <label for="num-quantidade">Quantidade de sorteios</label>
+                    <input type="number" id="num-quantidade" value="1" min="1" max="1000">
+                </div>
+                <div class="form-group checkbox-group">
+                    <label>
+                        <input type="checkbox" id="num-repetidos">
+                        Permitir números repetidos
+                    </label>
+                </div>
+                <button class="btn-sortear" id="btn-sortear-numeros">
+                    🎯 Sortear
+                </button>
+            </div>
+        </section>
+
+        <!-- Painel: Sorteio de Nomes -->
+        <section id="tab-nomes" class="tab-content">
+            <div class="card">
+                <h2>Sortear Nomes</h2>
+
+                <!-- Área para digitar nomes -->
+                <div class="form-group">
+                    <label for="nomes-textarea">Digite os nomes (um por linha)</label>
+                    <textarea id="nomes-textarea" rows="6" placeholder="João Silva&#10;Maria Santos&#10;Pedro Oliveira&#10;Ana Costa"></textarea>
+                </div>
+
+                <!-- Upload de arquivo -->
+                <div class="upload-area" id="upload-area">
+                    <div class="upload-icon">📄</div>
+                    <p>Arraste um arquivo aqui ou clique para selecionar</p>
+                    <p class="upload-hint">Aceita arquivos .txt ou .csv (um nome por linha)</p>
+                    <input type="file" id="arquivo-nomes" accept=".txt,.csv" hidden>
+                </div>
+                <div id="upload-status" class="upload-status" hidden></div>
+
+                <div class="form-group">
+                    <label for="nomes-quantidade">Quantidade de sorteados</label>
+                    <input type="number" id="nomes-quantidade" value="1" min="1">
+                </div>
+
+                <div class="nomes-counter" id="nomes-counter">
+                    <span>0</span> nomes na lista
+                </div>
+
+                <button class="btn-sortear" id="btn-sortear-nomes">
+                    🎯 Sortear
+                </button>
+            </div>
+        </section>
+
+        <!-- Área de Resultados -->
+        <section id="resultado-area" class="resultado-area" hidden>
+            <div class="card resultado-card">
+                <h2>🏆 Resultado</h2>
+                <div id="resultado-conteudo" class="resultado-conteudo"></div>
+                <button class="btn-copiar" id="btn-copiar">
+                    📋 Copiar Resultado
+                </button>
+                <button class="btn-novo-sorteio" id="btn-novo-sorteio">
+                    🔄 Novo Sorteio
+                </button>
+            </div>
+        </section>
+
+        <!-- Histórico -->
+        <section id="historico-area" class="historico-area" hidden>
+            <div class="card">
+                <div class="historico-header">
+                    <h2>📜 Histórico</h2>
+                    <button class="btn-limpar-historico" id="btn-limpar-historico">Limpar</button>
+                </div>
+                <div id="historico-lista" class="historico-lista"></div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>Sorteio Online &copy; 2026 - Sorteios justos e transparentes</p>
+    </footer>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
